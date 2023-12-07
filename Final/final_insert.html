@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!-- final.html -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>final</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: dimgray;
+            margin: 0;
+            padding: 0;
+        }
+
+        #title {
+            text-align: center;
+            font-size: 24px;
+            color: white;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px black;
+        }
+
+        input[type="text"],
+        input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border: 1px solid gray;
+            border-radius: 4px;
+        }
+
+        input[type="checkbox"] {
+            margin-left: 10px;
+        }
+
+        input[type="submit"],
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border: 1px solid gray;
+            border-radius: 4px;
+            background-color: #5bc75f;
+            color: white;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <p id="title">Temporary Employment Corporation</p>
+    <form id="myForm" method="post" action="final.php">
+        <p>Candidate Name: <input type="text" name="value1" placeholder="Enter First and Last Name" required></p>
+
+        <p>Qualifications:</p>
+        <input type="checkbox" name="qualifications[]" value="SEC-45">SEC-45<br>
+        <input type="checkbox" name="qualifications[]" value="SEC-60">SEC-60<br>
+        <input type="checkbox" name="qualifications[]" value="Clerk">Clerk<br>
+        <input type="checkbox" name="qualifications[]" value="PRG-PY">PRG-PY<br>
+        <input type="checkbox" name="qualifications[]" value="PRG-C++">PRG-C++<br>
+        <input type="checkbox" name="qualifications[]" value="DBA-ORA">DBA-ORA<br>
+        <input type="checkbox" name="qualifications[]" value="DBA-DB2">DBA-DB2<br>
+        <input type="checkbox" name="qualifications[]" value="DBA-SQLSERV">DBA-SQLSERV<br>
+        <input type="checkbox" name="qualifications[]" value="SYS-1">SYS-1<br>
+        <input type="checkbox" name="qualifications[]" value="SYS-2">SYS-2<br>
+        <input type="checkbox" name="qualifications[]" value="NW-CIS">NW-CIS<br>
+        <input type="checkbox" name="qualifications[]" value="WD-CF">WD-CF<br>
+        
+
+        <p>Job History Description: <input type="text" name="value3" placeholder="Enter Job History"></p>
+        <p>Job history start date: <input type="date" name="value4"></p>
+        <p>Job history end date: <input type="date" name="value5"></p>
+
+        <p><input type="submit" name="submit" value="Submit"></p>
+        <p><button type="button" onclick="location.href='display_qualifications.php'">Qualification Descriptions</button></p>
+    </form>
+</body>
+</html>

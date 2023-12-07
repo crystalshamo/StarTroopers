@@ -1,4 +1,3 @@
-Temporary Employment Corporation (TEC) Database System
 
 Welcome to the Temporary Employment Corporation (TEC) Database System! This system is designed to streamline the process of connecting candidates seeking temporary employment with companies in need of temporary staff. TEC is built by a dedicated team of six using HTML, PHP, XAMPP, PHPmyADMIN, and SQL technologies.
 

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>TEC ERD no M:N</title>
+  <!-- 
+      Mermaid documentation:
+     https://mermaid.js.org/syntax/entityRelationshipDiagram.html
+  -->
+  
+  <!-- Load Mermaid CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.css">
+
+  <link rel="stylesheet" href="css/diag.css">
+
+</head>
+<body>
+
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs' 
+  </script>  
+
+  <!-- Initialize Mermaid -->
+  <script>
+    // Use the 'mermaid' global object to initialize the diagram
+    mermaid.initialize({
+      startOnLoad: true,
+      sequence: { showSequenceNumbers: true },
+    });
+</script>
+
+<section>
+
+<h1 style="text-align: center;">TEC ERD</h1>
+ 
+ <div class="mermaid" style="text-align: center">
+
+---
+title: 
+---
+erDiagram
+   
+    COMPANY {
+        int COMPANY_ID PK
+        varchar(50) COMPANY_NAME
+    }
+
+    OPENING {
+        int OPENING_ID PK
+        int COMPANY_ID FK
+        varchar(15) QUALIFICATION_CODE FK
+        datetime DATE_START
+        datetime DATE_END
+        decimal PAY_HOURLY
+    }
+	
+	PLACEMENT {
+		int PLACEMENT_ID PK
+		int OPENING_ID FK
+		int CANDIDATE_ID FK
+		decimal HOURS_WORKED
+		int JOB_HISTORY_ID FK
+	}
+	
+	JOB_HISTORY {
+		int JOB_HISTORY_ID PK
+		int CANDIDATE_ID FK
+		varchar(255) JOB_HISTORY_DETAIL
+		datetime JOB_HISTORY_START
+		datetime JOB_HISTORY_END
+	}
+	
+	CANDIDATE {
+		int CANDIDATE_ID PK
+		varchar(20) CANDIDATE_NAME
+	}
+	
+	QUALIFICATION {
+		varchar(15) QUALIFICATION_CODE PK
+		varchar(255) QUALIFICATION_DESCRIPTION
+	}
+	
+	COURSE {
+		int COURSE_CODE PK
+		varchar(15) QUALIFICATION_CODE FK
+		varchar(255) COURSE_NAME
+	}
+	
+	SESSION {
+		int SESSION_ID PK
+		int COURSE_CODE FK
+		decimal SESSION_FEE
+		int CANDIDATE_ID FK
+	}
+	
+	CANDIDATE_QUALIFICATIONS {
+		int CANDIDATE_ID PK, FK
+		varchar(15) QUALIFICATION_CODE PK, FK
+	}
+	
+	PREREQUISITE_COURSE {
+		int COURSE_CODE PK, FK
+		varchar(15) QUALIFICATION_CODE PK, FK
+	}
+    
+COMPANY ||--|{ OPENING : ""
+
+OPENING ||--o{ PLACEMENT : ""
+OPENING }o--|| QUALIFICATION : ""
+
+PLACEMENT }o--|| CANDIDATE : ""
+PLACEMENT |o--|| JOB_HISTORY : ""
+
+JOB_HISTORY }o--|| CANDIDATE : ""
+
+CANDIDATE ||--o{ CANDIDATE_QUALIFICATIONS : ""
+QUALIFICATION |o--|{ CANDIDATE_QUALIFICATIONS : ""
+
+COURSE ||--o{ SESSION : ""
+COURSE ||--|| QUALIFICATION : ""
+
+COURSE ||--o{ PREREQUISITE_COURSE : ""
+PREREQUISITE_COURSE }o--|| QUALIFICATION : ""
+
+SESSION |o--o{ CANDIDATE : ""
+
+
+</div>
+ 
+<br>
+
+
+
+ <div class="mermaid" style="text-align: center">
+sequenceDiagram
+    
+
+
+</div>
+
+
+  
+</section>
+
+</body>
+</html>
